@@ -49,14 +49,31 @@ class WeDeliver:
             else:
                 print("Invalid choice. Please try again.")
 
-      # view all drivers function
-      def view_drivers(self):
-        if not self.drivers:
-            print("No drivers available.")
-        else:
-            for driver in self.drivers:
-                print(driver)
+    # view all drivers function
+    def view_drivers(self):
+      if not self.drivers:
+          print("No drivers available.")
+      else:
+          for driver in self.drivers:
+              print(driver)
+    # view all drivers function
+    def add_driver(self):
+       name = input("Enter driver's name: ")
+       start_city = input("Enter driver's start city: ")
+       if start_city not in self.cities:
+          add_city = input(f"City '{start_city}' not found. Would you like to add it to the database? (yes/no): ")
+          if add_city.lower() == 'yes':
+             self.cities.append(start_city)
+             print(f"City {start_city} added to the database.")
 
+          else:
+               print("Driver not added.")
+               return  
+
+       driver = Driver(self.driver_id_counter, name, start_city)
+       self.drivers.append(driver)
+       self.driver_id_counter += 1
+       print(f"Driver {name} added successfully!")
 
     # Implementation of cities_menu
     def cities_menu(self):
@@ -78,6 +95,8 @@ class WeDeliver:
                 break
             else:
                 print("Invalid choice. Please try again.")
+    
+    
 
 # Initialize the system
 system = WeDeliver()
