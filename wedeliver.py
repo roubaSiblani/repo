@@ -3,6 +3,11 @@ class Driver:
         self.worker_id = worker_id
         self.name = name
         self.start_city = start_city
+        
+class CityNode:
+    def __init__(self, name):
+        self.name = name
+        self.neighbors = []
 
 class WeDeliver:
     # Constructor
@@ -45,7 +50,7 @@ class WeDeliver:
             elif choice == "2":
                 self.add_driver()
             elif choice == "3":
-                break
+                self.main_menu()
             else:
                 print("Invalid choice. Please try again.")
 
@@ -56,6 +61,7 @@ class WeDeliver:
       else:
           for driver in self.drivers:
               print(driver)
+
     # view all drivers function
     def add_driver(self):
        name = input("Enter driver's name: ")
@@ -92,7 +98,7 @@ class WeDeliver:
             elif choice == "3":
                 self.print_drivers_delivering_to_city()
             elif choice == "4":
-                break
+                self.main_menu()
             else:
                 print("Invalid choice. Please try again.")
 
