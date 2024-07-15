@@ -31,14 +31,45 @@ class WeDeliver:
                 print("Exit system, Goodbye!")
             else:
                 print("Invalid choice, please try again")
-    
-    # Placeholder for the drivers menu 
+    # implementation of drivers_menu           
     def drivers_menu(self):
-        print("Drivers menu is not yet implemented")
+        while True:
+            print("\nDrivers' Menu:")
+            print("1. To view all the drivers")
+            print("2. To add a driver")
+            print("3. To go back to main menu")
+            
+            choice = input("Enter your choice: ")
+            if choice == "1":
+                self.view_drivers()
+            elif choice == "2":
+                self.add_driver()
+            elif choice == "3":
+                break
+            else:
+                print("Invalid choice. Please try again.")
 
-    # Placeholder for the cities menu 
+
+    # Implementation of cities_menu
     def cities_menu(self):
-        print("Cities menu is not yet implemented")
+        while True:
+            print("\nCities' Menu:")
+            print("1. Show cities")
+            print("2. Print neighboring cities")
+            print("3. Print drivers delivering to city")
+            print("4. Go back to main menu")
+            
+            choice = input("Enter your choice: ")
+            if choice == "1":
+                self.show_cities()
+            elif choice == "2":
+                self.print_neighboring_cities()
+            elif choice == "3":
+                self.print_drivers_delivering_to_city()
+            elif choice == "4":
+                break
+            else:
+                print("Invalid choice. Please try again.")
 
 # Initialize the system
 system = WeDeliver()
