@@ -49,6 +49,14 @@ class WeDeliver:
             else:
                 print("Invalid choice. Please try again.")
 
+      # view all drivers function
+      def view_drivers(self):
+        if not self.drivers:
+            print("No drivers available.")
+        else:
+            for driver in self.drivers:
+                print(driver)
+
 
     # Implementation of cities_menu
     def cities_menu(self):
