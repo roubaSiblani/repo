@@ -95,6 +95,13 @@ class WeDeliver:
                 break
             else:
                 print("Invalid choice. Please try again.")
+
+    def show_cities(self):
+          if not self.cities:
+              print("No cities available.")
+          else:
+              for city in self.cities:
+                  print(city)   
     
     
 
