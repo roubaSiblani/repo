@@ -12,10 +12,20 @@ class CityNode:
 class WeDeliver:
     # Constructor
     def __init__(self):
-        self.drivers = []  
-        self.cities = ["Akkar", "Saida", "Jbeil"]  
-        self.deliveries = {}
-        self.driver_id_counter = 1
+    # Initialize with predefined cities and some connections using linked lists
+    self.drivers = []
+    self.cities = {}
+    self.create_initial_cities()
+    
+    #Each instance of the CityNode class represents a city by storing its name.
+    def create_initial_cities(self):
+        akkar = CityNode("Akkar")
+        beirut = CityNode("Beirut")
+        saida = CityNode("Saida")
+        tripoli = CityNode("Tripoli")
+        jbeil = CityNode("Jbeil")
+
+
 
     # The main menu of the system  
     def main_menu(self):
