@@ -9,17 +9,17 @@ class CityNode:
         self.name = name
         self.neighbors = []
 
-class WeDeliver:
-    # Constructor
-    def __init__(self):
-    # Initialize with predefined cities 
-    self.drivers = []
-    self.cities = {}
-    self.create_initial_cities()
-
     def add_neighbor(self, neighbor_node):
         self.neighbors.append(neighbor_node)
 
+
+class WeDeliver:
+    # Constructor
+    def __init__(self):
+        # Initialize with predefined cities 
+        self.drivers = []
+        self.cities = {}
+        self.create_initial_cities()
     
     #Each instance of the CityNode class represents a city by storing its name.
     def create_initial_cities(self):
@@ -83,31 +83,31 @@ class WeDeliver:
 
     # view all drivers function
     def view_drivers(self):
-      if not self.drivers:
-          print("No drivers available.")
-      else:
-          for driver in self.drivers:
-              print(driver)
-
+        if not self.drivers:
+            print("No drivers available.")
+        else:
+            for driver in self.drivers:
+                print(f"{driver.driver_id}, {driver.name}, {driver.start_city}")
+    
     # view all drivers function
     def add_driver(self):
-       name = input("Enter driver's name: ")
-       start_city = input("Enter driver's start city: ")
-       if start_city not in self.cities:
-          add_city = input(f"City '{start_city}' not found. Would you like to add it to the database? (yes/no): ")
-          if add_city.lower() == 'yes':
-             self.cities.append(start_city)
-             print(f"City {start_city} added to the database.")
-
-          else:
-               print("Driver not added.")
-               return  
-
-       driver = Driver(self.driver_id_counter, name, start_city)
-       self.drivers.append(driver)
-       self.driver_id_counter += 1
-       print(f"Driver {name} added successfully!")
-
+        name = input("Enter the driver's name: ")
+        start_city = input("Enter the start city: ")
+        
+        if start_city not in self.cities:
+            add_city = input(f"City '{start_city}' not found. Would you like to add it to the database? (yes/no): ")
+            if add_city.lower() == 'yes':
+                new_city = CityNode(start_city)
+                self.cities[start_city] = new_city
+            else:
+                print("Driver not added.")
+                return
+        
+        new_id = f"ID{len(self.drivers) + 1:03d}"
+        new_driver = Driver(new_id, name, start_city)
+        self.drivers.append(new_driver)
+        print(f"Driver {name} added successfully with ID {new_id}.")
+       
     # Implementation of cities_menu
     def cities_menu(self):
         while True:
