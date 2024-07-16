@@ -12,10 +12,14 @@ class CityNode:
 class WeDeliver:
     # Constructor
     def __init__(self):
-    # Initialize with predefined cities and some connections using linked lists
+    # Initialize with predefined cities 
     self.drivers = []
     self.cities = {}
     self.create_initial_cities()
+
+    def add_neighbor(self, neighbor_node):
+        self.neighbors.append(neighbor_node)
+
     
     #Each instance of the CityNode class represents a city by storing its name.
     def create_initial_cities(self):
@@ -25,7 +29,20 @@ class WeDeliver:
         tripoli = CityNode("Tripoli")
         jbeil = CityNode("Jbeil")
 
+        akkar.add_neighbor(beirut)
+        akkar.add_neighbor(tripoli)
+        beirut.add_neighbor(akkar)
+        beirut.add_neighbor(saida)
+        saida.add_neighbor(beirut)
+        tripoli.add_neighbor(akkar)
 
+        self.cities = {
+            "Akkar": akkar,
+            "Beirut": beirut,
+            "Saida": saida,
+            "Tripoli": tripoli,
+            "Jbeil": jbeil
+        }
 
     # The main menu of the system  
     def main_menu(self):
