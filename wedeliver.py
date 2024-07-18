@@ -153,12 +153,26 @@ class WeDeliver:
 
 
     def print_drivers_delivering_to_city(self):
+    
         city_name = input("Enter the city name: ")
-        delivering_drivers = [driver for driver in self.drivers if self.driver_can_deliver_to(driver, city_name)]
+
+        # Create an empty list to hold drivers who can deliver to the specified city
+        delivering_drivers = []
+
+        # Iterate through each driver in the list of all drivers (self.drivers)
+        for driver in self.drivers:
+            # Check if the current driver can deliver to the specified city
+            if self.driver_can_deliver_to(driver, city_name):
+                # If they can, add them to the list of delivering drivers
+                delivering_drivers.append(driver)
+
+        # Check if there are any drivers who can deliver to the specified city
         if delivering_drivers:
+            # If there are, print their details
             for driver in delivering_drivers:
                 print(f"{driver.driver_id}, {driver.name}, {driver.start_city}")
         else:
+            # If no drivers can deliver to the city, inform the user
             print(f"No drivers delivering to {city_name}.")
 
 
