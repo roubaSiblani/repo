@@ -138,16 +138,17 @@ class WeDeliver:
     
     
     def print_neighboring_cities(self):
-        city_name = input ("Enter the name of city:")
-        if city_name in self.cities:
-            city_node = self.cities [city_name]
-            if city_node.neighbors:
-                neighbor_names = [neighbor_names for neighbor in city_node]
-                print("Neighbor cities of {city_name}: {','.join(neighbor_names)}")
-            else:
-                print("No neighboring cities for {city_name}")
-            else:
-                print("City '{city_name}' not found. ")
+        city_name = input("Enter city name to see its neighbors: ")
+        city_node = self.get_city_node(city_name)  # Find the CityNode object corresponding to the city name
+        if city_node:
+            print(f"Neighbors of {city_name}:")
+            neighbor_names = []
+            for neighbor in city_node.neighbors:  # Iterate through the neighbors of the city
+                neighbor_names.append(neighbor.name)  # Add the name of each neighboring city to the list
+            for name in neighbor_names:  # Iterate through the list of neighbor names
+                print(name)  # Print each neighbor name
+        else:
+            print(f"City {city_name} not found.")
 
 
     def print_drivers_delivering_to_city(self):
