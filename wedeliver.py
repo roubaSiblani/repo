@@ -1,6 +1,6 @@
 class Driver:
-    def __init__(self, worker_id, name, start_city):
-        self.worker_id = worker_id
+    def __init__(self, driver_id, name, start_city):
+        self.driver_id = driver_id
         self.name = name
         self.start_city = start_city
         
@@ -150,6 +150,10 @@ class WeDeliver:
                 print(name)  # Print each neighbor name
         else:
             print(f"City {city_name} not found.")
+
+    
+    def get_city_node(self, city_name):
+        return self.cities.get(city_name, None)
 
 
     def print_drivers_delivering_to_city(self):
