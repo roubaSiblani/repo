@@ -137,6 +137,17 @@ class WeDeliver:
                 print(city.name)  
     
     
+    def print_neighboring_cities(self):
+        city_name = input ("Enter the name of city:")
+        if city_name in self.cities:
+            city_node = self.cities [city_name]
+            if city_node.neighbors:
+                neighbor_names = [neighbor_names for neighbor in city_node]
+                print("Neighbor cities of {city_name}: {','.join(neighbor_names)}")
+            else:
+                print("No neighboring cities for {city_name}")
+            else:
+                print("City '{city_name}' not found. ")
 
 # Initialize the system
 system = WeDeliver()
