@@ -150,7 +150,7 @@ class WeDeliver:
                 print("City '{city_name}' not found. ")
 
 
-        def print_drivers_delivering_to_city(self):
+    def print_drivers_delivering_to_city(self):
         city_name = input("Enter the city name: ")
         delivering_drivers = [driver for driver in self.drivers if self.driver_can_deliver_to(driver, city_name)]
         if delivering_drivers:
@@ -159,6 +159,28 @@ class WeDeliver:
         else:
             print(f"No drivers delivering to {city_name}.")
 
-# Initialize the system
+
+    def driver_can_deliver_to(self, driver, city_name):
+
+        if driver.start_city == city_name:
+            return True
+        if city_name not in self.cities:
+            return False
+        visited = set()
+        queue = [self.cities[driver.start_city]]
+
+        while queue:
+            current_city_node = queue.pop(0)
+            if current_city_node.name in visited:
+                continue
+            visited.add(current_city_node.name)
+            if current_city_node.name == city_name:
+                return True
+            for neighbor in current_city_node.neighbors:
+                if neighbor.name not in visited:
+                    queue.append(neighbor)
+        return False
+
+
 system = WeDeliver()
 system.main_menu()
