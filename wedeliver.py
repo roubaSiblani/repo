@@ -149,6 +149,16 @@ class WeDeliver:
             else:
                 print("City '{city_name}' not found. ")
 
+
+        def print_drivers_delivering_to_city(self):
+        city_name = input("Enter the city name: ")
+        delivering_drivers = [driver for driver in self.drivers if self.driver_can_deliver_to(driver, city_name)]
+        if delivering_drivers:
+            for driver in delivering_drivers:
+                print(f"{driver.driver_id}, {driver.name}, {driver.start_city}")
+        else:
+            print(f"No drivers delivering to {city_name}.")
+
 # Initialize the system
 system = WeDeliver()
 system.main_menu()
