@@ -23,24 +23,25 @@ class WeDeliver:
     
     #Each instance of the CityNode class represents a city by storing its name.
     def create_initial_cities(self):
-        akkar = CityNode("Akkar")
-        beirut = CityNode("Beirut")
-        saida = CityNode("Saida")
-        tripoli = CityNode("Tripoli")
+    
         jbeil = CityNode("Jbeil")
+        beirut = CityNode("Beirut")
+        akkar = CityNode("Akkar")
+        saida = CityNode("Saida")
+        zahle = CityNode("Zahle")
 
-        akkar.add_neighbor(beirut)
-        akkar.add_neighbor(tripoli)
-        beirut.add_neighbor(akkar)
-        beirut.add_neighbor(saida)
-        saida.add_neighbor(beirut)
-        tripoli.add_neighbor(akkar)
+        jbeil.add_neighbor(beirut)
+        jbeil.add_neighbor(akkar)
+        beirut.add_neighbor(jbeil)
+        akkar.add_neighbor(jbeil)
+        saida.add_neighbor(zahle)
+        zahle.add_neighbor(saida)
 
         self.cities = {
             "Akkar": akkar,
             "Beirut": beirut,
             "Saida": saida,
-            "Tripoli": tripoli,
+            "Zahle": zahle,
             "Jbeil": jbeil
         }
 
